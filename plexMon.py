@@ -22,7 +22,7 @@ def sendAlert(alertText):
     }), {"Content-type": "application/x-www-form-urlencoded"})
   conn.getresponse()
 
-logLocation = expanduser('~') + '/Library/Logs/plexMon.log'
+logLocation = expanduser('~') + '/Library/Logs/plexMon.log'  # Log location is Mac OS X specfic, update if on a different platform
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%Y-%m-%d %H:%M:%S', filename=logLocation, level=logging.INFO)
 log = open(logLocation).read()
 
