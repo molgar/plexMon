@@ -31,8 +31,13 @@ data = server.read()
 server.close()
 tree = ET.fromstring(data)
 for video in tree.iter('Video'):
-  title = '%s - %s' % (video.get('grandparentTitle'), video.get('title'))
-  user = video.find('User').get('title').split('@')[0]
+  show = video.get('grandparentTitle')
+  episode = video.get('title')
+  if show == "None":
+    title = episode
+  else:
+    title = '%s - %s' % (show, episode)
+    user = video.find('User').get('title').split('@')[0]
   alert = '%s is watching %s' % (user, title)
   if alert not in log:
     logging.info(alert)
